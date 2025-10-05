@@ -76,5 +76,8 @@ ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
 
+# ===== Rider plugin cache =====
+.idea/.idea.LockIt
+
 # ===== Optional: Rider's HTTP client requests =====
 httpRequests/
