@@ -1,0 +1,80 @@
+# ===== Rider / JetBrains =====
+.idea/
+*.sln.iml
+
+# ===== Visual Studio =====
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ===== Build folders =====
+bin/
+obj/
+Debug/
+Release/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+
+# ===== Logs and Temporary files =====
+*.log
+*.tlog
+*.tmp
+*.bak
+*.ncb
+*.aps
+*.cache
+*.ilk
+
+# ===== NuGet Packages =====
+*.nupkg
+*.snupkg
+packages/
+*.nuspec
+*.nuproj
+*.psmdcp
+.project.lock.json
+project.lock.json
+artifacts/
+
+# ===== Resharper / JetBrains Rider =====
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# ===== Other generated files =====
+*.exe
+*.dll
+*.pdb
+*.dbmdl
+*.jfm
+
+# ===== Publish folders =====
+publish/
+AppPackages/
+BundleArtifacts/
+Package.StoreAssociation.xml
+Package.appxmanifest
+
+# ===== Local database =====
+*.mdf
+*.ldf
+
+# ===== Others =====
+*.tmp_proj
+*.svclog
+*.scc
+
+# ===== OS generated files =====
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ===== Optional: Rider's HTTP client requests =====
+httpRequests/
