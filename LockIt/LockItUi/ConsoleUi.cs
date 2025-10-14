@@ -21,7 +21,7 @@ public static class ConsoleUi
                 int length = AskPasswordLength();
                 
                 var generator = new PasswordGenerator(CharacterSets.Digits +
-                                                      CharacterSets.Digits + length +
+                                                      CharacterSets.Digits +
                                                       CharacterSets.UpperCaseLetters +
                                                       CharacterSets.SpecialCharacters);
                 string password = generator.GeneratePassword(length);
@@ -44,12 +44,13 @@ public static class ConsoleUi
         Console.WriteLine("+===========================+");
     }
 
-    public static int AskPasswordLength()
-    {
-        Console.WriteLine("What is the length of your password? (e.g., 4, 8, 12): ");
-        int length = Convert.ToInt32(Console.ReadLine()?.Trim());
-        return length;
-    }
+    //Old method to Ask the length para gerar o usuário.
+    // public static int AskPasswordLength()
+    // {
+    //     Console.WriteLine("What is the length of your password? (e.g., 4, 8, 12): ");
+    //     int length = Convert.ToInt32(Console.ReadLine()?.Trim());
+    //     return length;
+    // }
 
     public static void DisplayPassword(string password)
     {
@@ -57,4 +58,36 @@ public static class ConsoleUi
         Console.WriteLine("Press any key to continue...");
         Console.ReadKey();
     }
+
+    public static int AskPasswordLength()
+    {
+        int length = 0;
+        bool validInput = false;
+
+        while (!validInput)
+        {
+            Console.WriteLine("Enter the desired password length (4 - 100): ");
+            string userInput = Console.ReadLine();
+
+            if (int.TryParse(userInput, out length))
+            {
+                if (length >= 4 && length <= 100)
+                {
+                    validInput = true;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a number between 4 and 100.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please type only numbers.");
+            }
+        }
+        return length;
+    }
+    
+    
 }
+
