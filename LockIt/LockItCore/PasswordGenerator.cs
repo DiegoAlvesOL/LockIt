@@ -2,21 +2,26 @@ namespace LockIt.LockItCore;
 
 public class PasswordGenerator
 {
-    public static void GeneratePassword(int length)
-    {
-        string allChars = CharacterSets.Digits + CharacterSets.LowerCaseLetters + CharacterSets.UpperCaseLetters + CharacterSets.SpecialCharacters;
-        
-        string password = "";
 
-        Random randomGenerator = new Random();
+    public string AllowedCharacters { get; }
+
+    private readonly Random random = new();
+
+    public PasswordGenerator(string allowedCharacters)
+    {
+        AllowedCharacters = allowedCharacters;
+    }
+
+    public string GeneratePassword(int length)
+    {
+        string password = "";
 
         for (int currentPosition = 0; currentPosition < length; currentPosition++)
         {
-            int randomIndex = randomGenerator.Next(allChars.Length);
-            char selectedChar = allChars[randomIndex];
-            password = password + selectedChar;
+            int randomIndex = random.Next(AllowedCharacters.Length);
+            char selectedCharacter = AllowedCharacters[randomIndex];
+            password = password + selectedCharacter;
         }
-        Console.WriteLine($"Your password is: {password}");
-        Console.ReadKey();
+        return password;
     }
 }
