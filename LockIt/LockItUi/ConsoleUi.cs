@@ -1,9 +1,12 @@
+using LockIt.LockItInfra;
+
 namespace LockIt.LockItUi;
-using LockIt.LockItCore;
+using LockItCore;
 public static class ConsoleUi
 {
     public static void Start()
     {
+        credentials = JsonLoader.Load();
         while (true)
         {
             Console.Clear();
@@ -30,9 +33,19 @@ public static class ConsoleUi
                 
                 var generator = new PasswordGenerator(charset);
                 string password = generator.GeneratePassword(length);
-                DisplayPassword(password);
                 
                 var credential = CaptureCredentialData(password);
+                credential.CreatedAt = DateTime.UtcNow;
+                
+                credentials.Add(credential);
+                
+                JsonStorage.Save(credential);
+                
+                DisplayPassword(password);
+            }
+            else if (selection == "2")
+            {
+                ListCredentials();
             }
             else
             {
@@ -47,6 +60,7 @@ public static class ConsoleUi
         Console.WriteLine("|     WELCOME TO LOCKIT     |");
         Console.WriteLine("+===========================+");
         Console.WriteLine("| 1 - Generate password     |");
+        Console.WriteLine("| 2 - List credentials      |");
         Console.WriteLine("| 0 - To exit the software  |");
         Console.WriteLine("+===========================+");
     }
@@ -54,6 +68,7 @@ public static class ConsoleUi
     public static void DisplayPassword(string password)
     {
         Console.WriteLine($"Your password is: {password}");
+        Console.WriteLine("Credential saved successfully!");
         Console.WriteLine("Press any key to continue...");
         Console.ReadKey();
     }
@@ -145,5 +160,28 @@ public static class ConsoleUi
             Password = password,
             Notes = note
         };
+    }
+
+    public static void ListCredentials()
+    {
+        if (credentials.Count == 0)
+        {
+            Console.WriteLine("No credentials saved yet.");
+        }
+        else
+        {
+            foreach (var credential in credentials)
+            {
+                Console.WriteLine("======================================");
+                Console.WriteLine($"Service: {credential.Service}");
+                Console.WriteLine($"UserName: {credential.UserName}");
+                Console.WriteLine($"Password: {credential.Password}");
+                Console.WriteLine($"Created at: {credential.CreatedAt}");
+                Console.WriteLine($"Notes: {credential.Notes}");
+                Console.WriteLine("======================================");
+            }
+        }
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
     }
 }
