@@ -2,8 +2,19 @@ using LockIt.LockItInfra;
 
 namespace LockIt.LockItUi;
 using LockItCore;
+
+
+
+/// <summary>
+/// Classe estática responsável por gerenciar a interface do usuário no console.
+/// Permite gerar senhas, capturar credenciais e listar credenciais salvas.
+/// </summary>
 public static class ConsoleUi
 {
+    
+    /// <summary>
+    /// Inicia o fluxo principal do aplicativo LockIt no console.
+    /// </summary>
     public static void Start()
     {
         credentials = JsonLoader.Load();
@@ -102,6 +113,12 @@ public static class ConsoleUi
         return length;
     }
 
+    /// <summary>
+    /// Solicita ao usuário quais tipos de caracteres incluir na senha.
+    /// </summary>
+    /// <returns>
+    /// Tupla booleana indicando se dígitos, letras minúsculas, letras maiúsculas e caracteres especiais devem ser incluídos.
+    /// </returns>
     public static (bool includeDigits, bool includeLowerCase, bool includeUpperCase, bool includeSpecialChars)
         GetCharacterOptions()
     {
@@ -144,7 +161,7 @@ public static class ConsoleUi
 
     public static Credential CaptureCredentialData(string password)
     {
-        Console.WriteLine("Enter with email of service (e.g., Gmail, https://example.com): )");
+        Console.WriteLine("Enter with name or address of service (e.g., Gmail, https://example.com): )");
         string service = Console.ReadLine().Trim().ToLower();
         
         Console.WriteLine("Enter the email/username for this service: ");
