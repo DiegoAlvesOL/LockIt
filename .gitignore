@@ -81,3 +81,7 @@ $RECYCLE.BIN/
 
 # ===== Optional: Rider's HTTP client requests =====
 httpRequests/
+
+# ===== Sensitive / local data =====
+# Local credentials file (contains passwords, tokens, etc.)
+LockIt/LockItData/credentials.json
