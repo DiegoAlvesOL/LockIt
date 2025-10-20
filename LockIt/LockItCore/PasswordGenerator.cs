@@ -1,5 +1,9 @@
 namespace LockIt.LockItCore;
 
+
+/// <summary>
+/// Classe responsável por gerar senhas aleatórias com base em um conjunto de caracteres permitido.
+/// </summary>
 public class PasswordGenerator
 {
 
@@ -7,9 +11,9 @@ public class PasswordGenerator
 
     private readonly Random random = new();
 
-    public PasswordGenerator(string allowedCharacters)
+    public PasswordGenerator(string charset)
     {
-        AllowedCharacters = allowedCharacters;
+        AllowedCharacters = charset;
     }
 
     public string GeneratePassword(int length)
