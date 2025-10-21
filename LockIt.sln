@@ -1,6 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# 
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LockIt", "LockIt\LockIt.csproj", "{5847BBD0-4569-4A53-BB68-DFCF81BF8791}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LockIt.IntegrationTests", "LockIt.IntegrationTests\LockIt.IntegrationTests.csproj", "{35880D02-5ED0-4287-B268-2664D92E96CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LockIt.TestHelpers", "LockIt.TestHelpers\LockIt.TestHelpers.csproj", "{A55DDF86-3E62-4C24-A681-33071BDD5771}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +17,13 @@ Global
 		{5847BBD0-4569-4A53-BB68-DFCF81BF8791}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5847BBD0-4569-4A53-BB68-DFCF81BF8791}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5847BBD0-4569-4A53-BB68-DFCF81BF8791}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35880D02-5ED0-4287-B268-2664D92E96CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35880D02-5ED0-4287-B268-2664D92E96CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35880D02-5ED0-4287-B268-2664D92E96CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35880D02-5ED0-4287-B268-2664D92E96CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A55DDF86-3E62-4C24-A681-33071BDD5771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A55DDF86-3E62-4C24-A681-33071BDD5771}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A55DDF86-3E62-4C24-A681-33071BDD5771}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A55DDF86-3E62-4C24-A681-33071BDD5771}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
