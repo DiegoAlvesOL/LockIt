@@ -1,0 +1,34 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="LockIt.GUI.MainWindow"
+        Width="600" Height="800"
+        Title="LockIt | Hello Window"
+        Background="Transparent"
+        TransparencyLevelHint="AcrylicBlur">
+    
+    <StackPanel VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+        
+        <TextBlock Text="Welcome to LockIt!"
+                   FontSize="20"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20">
+        </TextBlock>
+        
+        <Button Content="Say Hello"
+                Width="100"
+                HorizontalAlignment="Center"
+                Click="OnHelloClicked">
+        </Button>
+        
+        <ExperimentalAcrylicBorder IsHitTestVisible="False">
+            <ExperimentalAcrylicBorder.Material>
+                <ExperimentalAcrylicMaterial BackgroundSource="Digger"
+                                             TintColor= "Black"
+                                             TintOpacity="0.6"
+                                             MaterialOpacity="0.8">
+                </ExperimentalAcrylicMaterial>
+            </ExperimentalAcrylicBorder.Material>
+        </ExperimentalAcrylicBorder>
+    </StackPanel>
+</Window>
