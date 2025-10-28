@@ -10,20 +10,37 @@ public partial class MainWindow : Window
         InitializeComponent();
     }
 
-    private void OnHelloClicked(object? sender, RoutedEventArgs eventButton)
+    private void OnGenerateClicked(object? sender, RoutedEventArgs eventButtonGenerate)
     {
-        var messageBox = new Window
+        var generatorWindow = new Window()
         {
-            Width = 220,
-            Height = 120,
-            Title = "Hello",
-            Content = new TextBox
+            Width = 300,
+            Height = 150,
+            Title = "Password Generator",
+            Content = new TextBlock
             {
-                Text = "Hello, Diego seu lindo",
-                VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center,
+                Text = "Aqui será gerada sua senha",
                 HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
+                VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center,
             }
         };
-        messageBox.Show();
+        generatorWindow.Show();
+    }
+
+    private void OnListClicked(object? sender, RoutedEventArgs eventButtonList)
+    {
+        var listWindow = new Window()
+        {
+            Width = 300,
+            Height = 150,
+            Title = "List of Passwords",
+            Content = new TextBlock()
+            {
+                Text = "Sua lista de password",
+                HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
+                VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center,
+            }
+        };
+        listWindow.Show();
     }
 }
