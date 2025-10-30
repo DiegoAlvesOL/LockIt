@@ -1,46 +1,56 @@
+using System;
+using System.ComponentModel;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 
 namespace LockIt.GUI;
 
-public partial class MainWindow : Window
+public partial class MainWindow : Window, INotifyPropertyChanged
 {
+    private string _passwordDisplay;
+
+    public string PasswordDisplay
+    {
+        get => _passwordDisplay;
+        set
+        {
+            if (_passwordDisplay != value)
+            {
+                _passwordDisplay = value;
+                OnPropertyChanged(nameof(PasswordDisplay));
+            }
+        }
+    }
     public MainWindow()
     {
         InitializeComponent();
+        DataContext = this;
+        
+        PasswordDisplay = "Your password will appear here";
     }
 
-    private void OnGenerateClicked(object? sender, RoutedEventArgs eventButtonGenerate)
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    private void OnPropertyChanged(string propertyName)
     {
-        var generatorWindow = new Window()
-        {
-            Width = 300,
-            Height = 150,
-            Title = "Password Generator",
-            Content = new TextBlock
-            {
-                Text = "Aqui será gerada sua senha",
-                HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
-                VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center,
-            }
-        };
-        generatorWindow.Show();
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-    private void OnListClicked(object? sender, RoutedEventArgs eventButtonList)
+    private void OnCopyClicked(object? sender, RoutedEventArgs eventButtonCopy)
     {
-        var listWindow = new Window()
-        {
-            Width = 300,
-            Height = 150,
-            Title = "List of Passwords",
-            Content = new TextBlock()
-            {
-                Text = "Sua lista de password",
-                HorizontalAlignment = Avalonia.Layout.HorizontalAlignment.Center,
-                VerticalAlignment = Avalonia.Layout.VerticalAlignment.Center,
-            }
-        };
-        listWindow.Show();
+        Console.WriteLine("Copy button clicked!");
+    }
+
+    private void OnReloadClicked(object? sender, RoutedEventArgs eventButtonReload)
+    {
+        Console.WriteLine("Reload button clicked!");
+        PasswordDisplay = "NewPassword#123";
+        DataContext = null;
+        DataContext = this;
+    }
+
+    private void OnSaveClicked(object? sender, RoutedEventArgs eventButtonSave)
+    {
+        Console.WriteLine("Save button clicked!");
     }
 }

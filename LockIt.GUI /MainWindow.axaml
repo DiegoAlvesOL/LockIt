@@ -2,9 +2,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         x:Class="LockIt.GUI.MainWindow"
         Width="600" Height="800"
-        Title="LockIt | Password Manager"
-        Background="#192422"
-        TransparencyLevelHint="AcrylicBlur">
+        Title="🔒LockIt Password Manager"
+        Background="#1E1E2F"
+        TransparencyLevelHint="AcrylicBlur"
+        xmlns:gui="clr-namespace:LockIt.GUI"
+        x:DataType="gui:MainWindow">
     
     
     <Grid>
@@ -37,6 +39,7 @@
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
             
             <Grid.ColumnDefinitions>
@@ -45,31 +48,37 @@
             </Grid.ColumnDefinitions>
             
             <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
-                       Text="Welcome to LockIt!"
+                       Text="{Binding PasswordDisplay, FallbackValue='Your password will appear here'}"
                        Foreground="White"
-                       FontSize="18"
-                       HorizontalAlignment="Center"
+                       FontSize="16"
+                       FontFamily="Consolas"
+                       Background="#0a2b26"
+                       Padding="10"
+                       HorizontalAlignment="Stretch"
+                       VerticalAlignment="Center"
                        Margin="0,0,0,20"/>
             
-            <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                    Content="Generate Password:"
-                    Width="200" Height="40"
-                    Background="#03120f"
-                    Foreground="White"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    Margin="0,10,10,0"
-                    Click="OnGenerateClicked"/>
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="2" 
+                        Orientation="Horizontal" 
+                        HorizontalAlignment="Center" 
+                        Spacing="10" 
+                        Margin="0,0,0,20">
+                <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                        Content="Copy this password"
+                        Width="160"
+                        Height="40"
+                        Background="#03120f"
+                        Foreground="White"
+                        Click="OnCopyClicked"/>
             
-            <Button Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
-                    Content=" Copy this password"
-                    Width="200" Height="40"
-                    Background="#03120f"
-                    Foreground="White"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Margin="0,10,10,0"
-                    Click="OnListClicked"/>
+                <Button Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                        Content="Reload"
+                        Width="120"
+                        Height="40"
+                        Background="#03120f"
+                        Foreground="White"
+                        Click="OnReloadClicked"/>
+            </StackPanel>
             
             <TextBlock Grid.Row="2" Grid.Column="0" 
                        Text="Name or address of service:"
@@ -78,7 +87,6 @@
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        Margin="0,10,10,0"/>
-            
             <TextBox Grid.Row="2" Grid.Column="1"
                      Width="380"
                      HorizontalAlignment="Left"
@@ -96,7 +104,6 @@
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        Margin="0,10,10,0"/>
-            
             <TextBox Grid.Row="3" Grid.Column="1"
                      Width="380"
                      HorizontalAlignment="Left"
@@ -114,7 +121,6 @@
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        Margin="0,10,10,0"/>
-            
             <TextBox Grid.Row="4" Grid.Column="1"
                      Width="380"
                      HorizontalAlignment="Left"
@@ -124,14 +130,13 @@
                      BorderBrush="#004d40"
                      BorderThickness="1"
                      Margin="0,10,0,0"/>
-            
             <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
                     Content="Save"
                     Width="200" Height="40"
                     Background="#03120f"
                     Foreground="White"
                     HorizontalAlignment="Center"
-                    Click="OnListClicked"/>
+                    Click="OnSaveClicked"/>
         </Grid>
         
         <!-- Rodapé -->
