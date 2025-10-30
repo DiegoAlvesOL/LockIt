@@ -21,6 +21,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers\" />
+      <ProjectReference Include="..\LockIt\LockIt.csproj" />
     </ItemGroup>
 </Project>
