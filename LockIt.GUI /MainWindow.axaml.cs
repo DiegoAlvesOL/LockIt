@@ -21,6 +21,9 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             }
         }
     }
+    /// <summary>
+    /// Construtor da janela principal
+    /// </summary>
     public MainWindow()
     {
         InitializeComponent();
@@ -28,19 +31,26 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         
         PasswordDisplay = "Your password will appear here";
     }
-
+    
+    /// <summary>
+    /// Evento necesssário para o Binding funcionar corretamente.
+    /// </summary>
     public event PropertyChangedEventHandler? PropertyChanged;
-
     private void OnPropertyChanged(string propertyName)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
-
+    
+    /// <summary>
+    /// Evento do botão Copy
+    /// </summary>
     private void OnCopyClicked(object? sender, RoutedEventArgs eventButtonCopy)
     {
         Console.WriteLine("Copy button clicked!");
     }
-
+    /// <summary>
+    /// Evento do botão Reload
+    /// </summary>
     private void OnReloadClicked(object? sender, RoutedEventArgs eventButtonReload)
     {
         Console.WriteLine("Reload button clicked!");
@@ -48,9 +58,17 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         DataContext = null;
         DataContext = this;
     }
-
+    
+    /// <summary>
+    /// Evento do botão Save
+    /// </summary>
     private void OnSaveClicked(object? sender, RoutedEventArgs eventButtonSave)
     {
         Console.WriteLine("Save button clicked!");
+    }
+
+    private string GeneratePassword(int length)
+    {
+        
     }
 }
