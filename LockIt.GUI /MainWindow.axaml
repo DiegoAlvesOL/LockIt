@@ -3,7 +3,7 @@
         x:Class="LockIt.GUI.MainWindow"
         Width="600" Height="800"
         Title="🔒LockIt Password Manager"
-        Background="#1E1E2F"
+        Background="#192422"
         TransparencyLevelHint="AcrylicBlur"
         xmlns:gui="clr-namespace:LockIt.GUI"
         x:DataType="gui:MainWindow">
@@ -33,13 +33,14 @@
         <Grid Grid.Row="1" Margin="20">
 
             <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
+                <RowDefinition Height="Auto" /> <!-- 0: Password display -->
+                <RowDefinition Height="Auto" /> <!-- 1: Buttons -->
+                <RowDefinition Height="Auto" /> <!-- 2: Slider -->
+                <RowDefinition Height="Auto" /> <!-- 3: Switches -->
+                <RowDefinition Height="Auto" /> <!-- 4: Service -->
+                <RowDefinition Height="Auto" /> <!-- 5: Email -->
+                <RowDefinition Height="Auto" /> <!-- 6: Notes -->
+                <RowDefinition Height="*" /> <!-- 7: Save button -->
             </Grid.RowDefinitions>
             
             <Grid.ColumnDefinitions>
@@ -47,32 +48,30 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             
+            <!-- Display da senha (linha 0) -->
             <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
                        Text="{Binding PasswordDisplay, FallbackValue='Your password will appear here'}"
                        Foreground="White"
-                       FontSize="16"
-                       FontFamily="Consolas"
+                       FontSize="18"
+                       FontFamily="Courier"
                        Background="#0a2b26"
                        Padding="10"
                        HorizontalAlignment="Stretch"
                        VerticalAlignment="Center"
-                       Margin="0,0,0,20"/>
+                       Margin="0,0,0,25"/>
             
-            <StackPanel Grid.Row="1" Grid.ColumnSpan="2" 
-                        Orientation="Horizontal" 
+            <!-- Botões Copy e Reload (linha 1) -->
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" 
                         HorizontalAlignment="Center" 
                         Spacing="10" 
-                        Margin="0,0,0,20">
-                <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                        Content="Copy this password"
+                        Margin="0,10,0,25">
+                <Button Content="Copy this password"
                         Width="160"
                         Height="40"
                         Background="#03120f"
                         Foreground="White"
                         Click="OnCopyClicked"/>
-            
-                <Button Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
-                        Content="Reload"
+                <Button Content="Reload"
                         Width="120"
                         Height="40"
                         Background="#03120f"
@@ -80,42 +79,39 @@
                         Click="OnReloadClicked"/>
             </StackPanel>
             
-            <TextBlock Grid.Row="2" Grid.Column="0" 
+            <!-- ========== SLIDER: Tamanho da Senha ========== -->
+            <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal"
+                        HorizontalAlignment="Center" Margin="0,0,0,10">
+                <TextBlock Text="Lenght" Foreground="White" FontSize="14"
+                           VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <Slider Minimum="4" Maximum="40" Value="{Binding PasswordLength}"
+                        TickFrequency="1" IsSnapToTickEnabled="True"
+                        Width="450" Margin="0,0,10,0"
+                        VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding PasswordLength}"
+                           Foreground="White" FontSize="14"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+            
+            <!-- ========== SWITCHES: Tipos de Caracteres ========== -->
+            <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Vertical"
+                        HorizontalAlignment="Center" Margin="0,10,0,20">
+                <ToggleSwitch Content="Digits (e.g. 543)"
+                              IsChecked="{Binding IncludeDigits}"
+                              Foreground="White" Margin="0,5,0,0"/>
+                <ToggleSwitch Content="Lowercase (e.g aafdz)"
+                              IsChecked="{Binding IncludeLowercase}"
+                              Foreground="White" Margin="0,5,0,0"/>
+                <ToggleSwitch Content="Uppercase (e.g. AWYBZ)"
+                              IsChecked="{Binding IncludeUppercase}"
+                              Foreground="White" Margin="0,5,0,0"/>
+                <ToggleSwitch Content="Symbols (e.g. $#@!)"
+                              IsChecked="{Binding IncludeSpecialChars}"
+                              Foreground="White" Margin="0,5,0,0"/>
+            </StackPanel>
+            
+            <TextBlock Grid.Row="4" Grid.Column="0" 
                        Text="Name or address of service:"
-                       Foreground="White"
-                       FontSize="14"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0,10,10,0"/>
-            <TextBox Grid.Row="2" Grid.Column="1"
-                     Width="380"
-                     HorizontalAlignment="Left"
-                     VerticalAlignment="Center"
-                     Background="#00221c"
-                     Foreground="White"
-                     BorderBrush="#004d40"
-                     BorderThickness="1"
-                     Margin="0,10,0,0"/>
-            
-            <TextBlock Grid.Row="3" Grid.Column="0"
-                       Text="email:"
-                       Foreground="White"
-                       FontSize="14"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       Margin="0,10,10,0"/>
-            <TextBox Grid.Row="3" Grid.Column="1"
-                     Width="380"
-                     HorizontalAlignment="Left"
-                     VerticalAlignment="Center"
-                     Background="#00221c"
-                     Foreground="White"
-                     BorderBrush="#004d40"
-                     BorderThickness="1"
-                     Margin="0,10,0,0"/>
-            
-            <TextBlock Grid.Row="4" Grid.Column="0"
-                       Text="Notes:"
                        Foreground="White"
                        FontSize="14"
                        HorizontalAlignment="Left"
@@ -130,7 +126,42 @@
                      BorderBrush="#004d40"
                      BorderThickness="1"
                      Margin="0,10,0,0"/>
-            <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+            
+            <TextBlock Grid.Row="5" Grid.Column="0"
+                       Text="email:"
+                       Foreground="White"
+                       FontSize="14"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0,10,10,0"/>
+            <TextBox Grid.Row="5" Grid.Column="1"
+                     Width="380"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Center"
+                     Background="#00221c"
+                     Foreground="White"
+                     BorderBrush="#004d40"
+                     BorderThickness="1"
+                     Margin="0,10,0,0"/>
+            
+            <TextBlock Grid.Row="6" Grid.Column="0"
+                       Text="Notes:"
+                       Foreground="White"
+                       FontSize="14"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="0,10,10,0"/>
+            <TextBox Grid.Row="6" Grid.Column="1"
+                     Width="380"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Center"
+                     Background="#00221c"
+                     Foreground="White"
+                     BorderBrush="#004d40"
+                     BorderThickness="1"
+                     Margin="0,10,0,0"/>
+            
+            <Button Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"
                     Content="Save"
                     Width="200" Height="40"
                     Background="#03120f"

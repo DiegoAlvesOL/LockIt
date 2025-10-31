@@ -17,15 +17,8 @@ public class GuiController
     /// </summary>
     /// <param name="length"></param>
     /// <returns></returns>
-    public string GenerateNewPassword(int length)
+    public string GenerateNewPassword(int length, string charset)
     {
-        // Aqui definimos quais conjuntos de caracteres serão usados.
-        // Para simplificar nesta aula, vamos incluir todos.
-        string charset = CharacterSets.Digits +
-                         CharacterSets.LowerCaseLetters +
-                         CharacterSets.UpperCaseLetters +
-                         CharacterSets.SpecialCharacters;
-                         
         PasswordGenerator generator = new PasswordGenerator(charset);
         return generator.GeneratePassword(length);
     }

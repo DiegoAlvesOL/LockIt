@@ -6,9 +6,21 @@ using LockIt.GUI.Controllers;
 
 namespace LockIt.GUI;
 
+/// <summary>
+/// Classe principal da janela. Responsável por gerenciar a interface do usuário.
+/// </summary>
 public partial class MainWindow : Window, INotifyPropertyChanged
 {
     private string _passwordDisplay;
+    private int _passwordLength = 10;
+    private bool _includeDigits = true;
+    private bool _includeLowercase = true;
+    private bool _includeUppercase = false;
+    private bool _includeSpecialChars = false;
+    
+    /// <summary>
+    /// CONTROLLER (LIGA GUI AO BACKEND)
+    /// </summary>
     private readonly GuiController _controller;
 
     public string PasswordDisplay
@@ -23,6 +35,72 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             }
         }
     }
+
+    public int PasswordLength
+    {
+        get => _passwordLength;
+        set
+        {
+            if (_passwordLength != value)
+            {
+                _passwordLength = value;
+                OnPropertyChanged(nameof(PasswordLength));
+            }
+        }
+    }
+
+    public bool IncludeDigits
+    {
+        get => _includeDigits;
+        set
+        {
+            if (_includeDigits != value)
+            {
+                _includeDigits = value;
+                OnPropertyChanged(nameof(IncludeDigits));
+            }
+        }
+    }
+
+    public bool IncludeLowercase
+    {
+        get => _includeLowercase;
+        set
+        {
+            if (_includeLowercase != value)
+            {
+                _includeLowercase = value;
+                OnPropertyChanged(nameof(IncludeLowercase));
+            }
+        }
+    }
+
+    public bool IncludeUppercase
+    {
+        get => _includeUppercase;
+        set
+        {
+            if (_includeUppercase != value)
+            {
+                _includeUppercase = value;
+                OnPropertyChanged(nameof(IncludeUppercase));
+            }
+        }
+    }
+
+    public bool IncludeSpecialChars
+    {
+        get => _includeSpecialChars;
+        set
+        {
+            if (_includeSpecialChars != value)
+            {
+                _includeSpecialChars = value;
+                OnPropertyChanged(nameof(IncludeSpecialChars));
+            }
+        }
+    }
+    
     /// <summary>
     /// Construtor da janela principal
     /// </summary>
@@ -57,8 +135,30 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     private void OnReloadClicked(object? sender, RoutedEventArgs eventButtonReload)
     {
         Console.WriteLine("Reload button clicked!");
-        int passwordLength = 12;
-        PasswordDisplay = "NewPassword#123";
+
+        string charset = "";
+        if (IncludeDigits)
+        {
+            charset += LockIt.LockItCore.CharacterSets.Digits;
+        }
+
+        if (IncludeLowercase)
+        {
+            charset += LockIt.LockItCore.CharacterSets.LowerCaseLetters;
+        }
+
+        if (IncludeUppercase)
+        {
+            charset += LockIt.LockItCore.CharacterSets.UpperCaseLetters;
+        }
+
+        if (IncludeSpecialChars)
+        {
+            charset += LockIt.LockItCore.CharacterSets.SpecialCharacters;
+        }
+        
+        var password = _controller.GenerateNewPassword(_passwordLength, charset);
+        PasswordDisplay = password;
         DataContext = null;
         DataContext = this;
     }
