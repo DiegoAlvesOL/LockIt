@@ -1,0 +1,25 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Styles.Resources>
+        <Color x:Key="PrimaryColor">#004d40</Color>
+        <Color x:Key="ButtonTextColor">White</Color>
+    </Styles.Resources>
+    
+    <!-- Estilo simples para botão -->
+    <Style Selector="Button">
+        <Setter Property="Background" Value="{DynamicResource PrimaryColor}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ButtonTextColor}"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Padding" Value="8,4"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+    
+    <!-- Classe hover -->
+    <Style Selector="Button:pointerover">
+        <Setter Property="Background" Value="#00221c"/>
+        
+    </Style>
+
+</Styles>

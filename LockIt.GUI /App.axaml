@@ -6,5 +6,6 @@
 
     <Application.Styles>
         <FluentTheme />
+        <StyleInclude Source="avares://LockIt.GUI/Themes/CustomTheme.axaml"/>
     </Application.Styles>
 </Application>

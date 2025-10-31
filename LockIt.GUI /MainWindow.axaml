@@ -7,7 +7,7 @@
         CanResize="False"
         ShowInTaskbar="True"
         Title="🔒LockIt Password Manager"
-        Background="#181C1F"
+        Background="#2f3d39"
         TransparencyLevelHint="AcrylicBlur"
         WindowStartupLocation="CenterScreen"
         xmlns:gui="clr-namespace:LockIt.GUI"
@@ -75,14 +75,10 @@
                 <Button Content="Copy this password"
                         Width="160"
                         Height="40"
-                        Background="#03120f"
-                        Foreground="White"
                         Click="OnCopyClicked"/>
                 <Button Content="Reload"
                         Width="120"
                         Height="40"
-                        Background="#03120f"
-                        Foreground="White"
                         Click="OnReloadClicked"/>
             </StackPanel>
             
@@ -119,7 +115,7 @@
             
             
             <TextBlock Grid.Row="4" Grid.Column="0" 
-                       Text="Name or address of service:"
+                       Text="Service:"
                        Foreground="White"
                        FontSize="14"
                        HorizontalAlignment="Left"
@@ -127,7 +123,7 @@
                        Margin="0,10,10,0"/>
             <TextBox Grid.Row="4" Grid.Column="1"
                      Text="{Binding Service}"
-                     Width="380"
+                     Width="450"
                      HorizontalAlignment="Left"
                      VerticalAlignment="Center"
                      Background="#00221c"
@@ -137,7 +133,7 @@
                      Margin="0,10,0,0"/>
             
             <TextBlock Grid.Row="5" Grid.Column="0"
-                       Text="email:"
+                       Text="Email:"
                        Foreground="White"
                        FontSize="14"
                        HorizontalAlignment="Left"
@@ -145,7 +141,7 @@
                        Margin="0,10,10,0"/>
             <TextBox Grid.Row="5" Grid.Column="1"
                      Text="{Binding Email}"
-                     Width="380"
+                     Width="450"
                      HorizontalAlignment="Left"
                      VerticalAlignment="Center"
                      Background="#00221c"
@@ -163,7 +159,7 @@
                        Margin="0,10,10,0"/>
             <TextBox Grid.Row="6" Grid.Column="1"
                      Text="{Binding Notes}"
-                     Width="380"
+                     Width="450"
                      HorizontalAlignment="Left"
                      VerticalAlignment="Center"
                      Background="#00221c"
@@ -182,8 +178,6 @@
             <Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"
                     Content="Save"
                     Width="200" Height="40"
-                    Background="#03120f"
-                    Foreground="White"
                     HorizontalAlignment="Center"
                     Click="OnSaveClicked"/>
         </Grid>
