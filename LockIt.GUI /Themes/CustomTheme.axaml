@@ -1,25 +1,64 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
-    <Styles.Resources>
-        <Color x:Key="PrimaryColor">#004d40</Color>
-        <Color x:Key="ButtonTextColor">White</Color>
-    </Styles.Resources>
     
-    <!-- Estilo simples para botão -->
-    <Style Selector="Button">
-        <Setter Property="Background" Value="{DynamicResource PrimaryColor}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ButtonTextColor}"/>
-        <Setter Property="CornerRadius" Value="10"/>
-        <Setter Property="Padding" Value="8,4"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    <Design.PreviewWith>
+        <Border Padding="20" Background="{DynamicResource PrimaryBackgroundGradient}" Width="200">
+            <Button HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Assets/Images/IconsMenu/housefill.png" Width="16"></Image>
+                    <Label Content="Home"></Label>
+                </StackPanel>
+            </Button>
+        </Border>
+    </Design.PreviewWith>
+    
+    <!-- Estilos adicionado ao app -->
+    <Style>
+        <Style Selector="Button">
+            <Setter Property="FontSize" Value="16"> </Setter>
+            <Setter Property="Padding" Value="10 5 10 5"></Setter>
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryForeground}"></Setter>
+            <Setter Property="Background" Value="{DynamicResource PrimaryBackground}"></Setter>
+        </Style>
     </Style>
     
-    <!-- Classe hover -->
-    <Style Selector="Button:pointerover">
-        <Setter Property="Background" Value="#00221c"/>
-        
+    <Style Selector="Button:pointerover /template/ContentPresenter">
+        <Setter Property="RenderTransform" Value="scale(1)"></Setter>
+        <Setter Property="Transitions">
+            <Transitions>
+                <BrushTransition Property="Foreground" Duration="0:0:0:1"></BrushTransition>
+                <BrushTransition Property="Background" Duration="0:0:0:1"></BrushTransition>
+                <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0:1"></TransformOperationsTransition>
+            </Transitions>
+        </Setter>
     </Style>
+    
+    <Style Selector="Button:pointerover /template/ContentPresenter">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryHoverForeground}"></Setter>
+        <Setter Property="Background" Value="{DynamicResource PrimaryHoverBackground}"></Setter>
+    </Style>
+    
+    <!-- Stilo antigo -->
+    <!-- -->
+    <!-- <Styles.Resources> -->
+    <!--     <Color x:Key="PrimaryColor">#004d40</Color> -->
+    <!--     <Color x:Key="ButtonTextColor">White</Color> -->
+    <!-- </Styles.Resources> -->
+    <!-- -->
+    <!-- ~1~ Estilo simples para botão @1@ -->
+    <!-- <Style Selector="Button"> -->
+    <!--     <Setter Property="Background" Value="{DynamicResource PrimaryColor}"/> -->
+    <!--     <Setter Property="Foreground" Value="{DynamicResource ButtonTextColor}"/> -->
+    <!--     <Setter Property="CornerRadius" Value="10"/> -->
+    <!--     <Setter Property="Padding" Value="8,4"/> -->
+    <!--     <Setter Property="HorizontalContentAlignment" Value="Center"/> -->
+    <!--     <Setter Property="VerticalContentAlignment" Value="Center"/> -->
+    <!-- </Style> -->
+    <!-- -->
+    <!-- ~1~ Classe hover @1@ -->
+    <!-- <Style Selector="Button:pointerover"> -->
+    <!--     <Setter Property="Background" Value="#00221c"/> -->
+    <!--      -->
+    <!-- </Style> -->
 
 </Styles>

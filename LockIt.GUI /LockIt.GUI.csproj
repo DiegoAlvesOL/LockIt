@@ -23,4 +23,23 @@
     <ItemGroup>
       <ProjectReference Include="..\LockIt\LockIt.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Assets\Images\IconsMenu\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Assets\Images\LogoLockIt.png" />
+      <AvaloniaResource Include="Assets\Images\LogoLockIt.png" />
+      <None Remove="Assets\Images\IconsMenu\gear-fill.png" />
+      <AvaloniaResource Include="Assets\Images\IconsMenu\gear-fill.png" />
+      <None Remove="Assets\Images\IconsMenu\housefill.png" />
+      <AvaloniaResource Include="Assets\Images\IconsMenu\housefill.png" />
+      <None Remove="Assets\Images\IconsMenu\password-fill.png" />
+      <AvaloniaResource Include="Assets\Images\IconsMenu\password-fill.png" />
+      <None Remove="Assets\Images\IconsMenu\heart-fill.png" />
+      <AvaloniaResource Include="Assets\Images\IconsMenu\heart-fill.png" />
+      <None Remove="Assets\Images\IconsMenu\list-bullets-fill.png" />
+      <AvaloniaResource Include="Assets\Images\IconsMenu\list-bullets-fill.png" />
+    </ItemGroup>
 </Project>
