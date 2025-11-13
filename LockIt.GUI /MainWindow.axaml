@@ -44,8 +44,6 @@
                         <Image Source="/Assets/Images/IconsMenu/gear-fill.png" Width="16"></Image>
                     </StackPanel>
                 </Button>
-                
-                
             </Grid>
         </Border> 
     </Grid>
